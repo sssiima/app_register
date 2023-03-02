@@ -10,7 +10,7 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
 def main():
-    db_session.global_init("db/blogs.db")
+    db_session.global_init("app_register/db/blogs.db")
     app.run()
 
 
@@ -35,9 +35,13 @@ def reqister():
                                    form=form,
                                    message="Такой пользователь уже есть")
         user = User(
-            name=form.name.data,
             email=form.email.data,
-            about=form.about.data
+            surname=form.surname.data,
+            name=form.name.data,
+            age=form.age.data,
+            position=form.position.data,
+            speciality=form.speciality.data,
+            address=form.address.data,
         )
         user.set_password(form.password.data)
         db_sess.add(user)
